@@ -33,7 +33,13 @@ header{
 @keyframes bg{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
 header img{
  width:170px;height:170px;border-radius:50%;border:5px solid #fff;
- box-shadow:0 0 30px rgba(0,0,0,.3);margin-bottom:25px;transition:.4s;
+ box-shadow:0 0 25px rgba(0,0,0,.4);
+ margin-bottom:25px;transition:.4s;
+ animation: glow 3s ease-in-out infinite alternate;
+}
+@keyframes glow {
+ from { box-shadow:0 0 15px rgba(0,120,255,.6); }
+ to { box-shadow:0 0 35px rgba(106,17,203,.9); }
 }
 header img:hover{transform:scale(1.08) rotate(2deg);}
 header h1{font-size:2.8rem;margin-bottom:10px;}
@@ -43,59 +49,37 @@ header .btn{
  text-decoration:none;font-weight:600;transition:.3s;
 }
 header .btn:hover{background:rgba(255,255,255,.85);}
-
-/* ---- Section basics ---- */
+/* ---- Sections ---- */
 section{max-width:1100px;margin:0 auto;padding:100px 20px;}
-h2{
- font-size:2rem;margin-bottom:30px;text-align:center;position:relative;
-}
-h2::after{
- content:"";position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);
- width:80px;height:4px;background:var(--blue);border-radius:2px;
-}
-
-/* ---- Cards ---- */
-.grid{display:grid;gap:30px;}
-@media(min-width:700px){.grid{grid-template-columns:repeat(2,1fr);} }
-.card{
- background:var(--bg);border-radius:16px;padding:40px 30px;
- box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.4s;
-}
+h2{text-align:center;font-size:2rem;margin-bottom:30px;position:relative;}
+h2::after{content:"";position:absolute;bottom:-10px;left:50%;transform:translateX(-50%);width:80px;height:4px;background:var(--blue);border-radius:2px;}
+.card{background:var(--bg);border-radius:16px;padding:40px 30px;box-shadow:0 10px 25px rgba(0,0,0,.08);transition:.4s;margin-bottom:40px;}
 .card:hover{transform:translateY(-10px);box-shadow:0 14px 30px rgba(0,0,0,.12);}
-.skills span,.soft span{
- display:inline-block;background:#e0f0ff;color:var(--blue);
- padding:8px 14px;border-radius:20px;margin:6px;font-size:.95rem;
-}
+.skills span,.soft span{display:inline-block;background:#e0f0ff;color:var(--blue);padding:8px 14px;border-radius:20px;margin:6px;font-size:.95rem;}
 ul{list-style:none;line-height:1.8;}
 a{color:var(--blue);text-decoration:none;}
 a:hover{text-decoration:underline;}
 /* ---- Contact ---- */
 .contact{background:#eef6ff;border-radius:16px;padding:40px;text-align:center;}
-.contact input,.contact textarea{
- width:90%;max-width:500px;margin:10px auto;padding:12px;border:1px solid #ccc;border-radius:8px;display:block;
-}
-.contact button{
- background:var(--blue);color:#fff;border:none;padding:12px 28px;border-radius:30px;font-weight:600;cursor:pointer;margin-top:10px;
-}
+.contact input,.contact textarea{width:90%;max-width:500px;margin:10px auto;padding:12px;border:1px solid #ccc;border-radius:8px;display:block;}
+.contact button{background:var(--blue);color:#fff;border:none;padding:12px 28px;border-radius:30px;font-weight:600;cursor:pointer;margin-top:10px;}
 .contact button:hover{background:#005fd1;}
 /* ---- Footer ---- */
 footer{text-align:center;padding:40px 20px;color:#777;font-size:.9rem;}
 footer a{color:var(--blue);}
-
-/* ---- Animations ---- */
 .fadeUp{opacity:0;transform:translateY(40px);transition:all 1s ease;}
 .fadeUp.visible{opacity:1;transform:translateY(0);}
 .toggle{
- position:fixed;bottom:25px;right:25px;width:50px;height:50px;
- border-radius:50%;background:var(--blue);color:#fff;font-size:22px;
- display:flex;align-items:center;justify-content:center;cursor:pointer;
- box-shadow:0 0 15px rgba(0,0,0,.3);z-index:999;
+ position:fixed;bottom:25px;right:25px;width:50px;height:50px;border-radius:50%;
+ background:var(--blue);color:#fff;font-size:22px;display:flex;align-items:center;justify-content:center;
+ cursor:pointer;box-shadow:0 0 15px rgba(0,0,0,.3);z-index:999;
 }
 </style>
 </head>
 <body>
 
 <nav>
+ <a href="#about">About</a>
  <a href="#skills">Skills</a>
  <a href="#projects">Projects</a>
  <a href="#certificates">Certificates</a>
@@ -110,10 +94,26 @@ footer a{color:var(--blue);}
  <p>
    <a href="https://www.linkedin.com/in/tarun-kumar-akula-6a289228a" target="_blank" style="color:#fff;">LinkedIn</a> |
    <a href="https://github.com/TARUN836" target="_blank" style="color:#fff;">GitHub</a> |
-   <a href="https://drive.google.com/file/d/1zhygK301isGYhK4t-AYucw6JB6AdQoM7/view?usp=sharing" target="_blank" style="color:#fff;">Download CV</a>
+   <a href="https://drive.google.com/file/d/1zhygK301isGYhK4t-AYucw6JB6AdQoM7/view?usp=sharing" target="_blank" style="color:#fff;">CV</a>
  </p>
- <a href="#skills" class="btn">Explore ↓</a>
+ <a href="#about" class="btn">Explore ↓</a>
 </header>
+
+<!-- 💬 About Me -->
+<section id="about" class="fadeUp">
+ <h2>About Me</h2>
+ <div class="card" style="text-align:center;">
+  <p style="font-size:1.1rem;line-height:1.8;max-width:850px;margin:0 auto;">
+   Hello! I’m <strong>Akula Tarun Kumar</strong> — a passionate <strong>Data Science & Web Development enthusiast</strong> from Visakhapatnam, India.  
+   I completed my <strong>B.Sc in Computer Science</strong> at <strong>GITAM University (2020–2023)</strong> and I’m currently pursuing my <strong>MCA</strong>.  
+   I love building interactive, data-driven projects that combine creativity and logic.  
+   My goal is to use technology to create meaningful solutions that make a real-world impact. 🚀
+  </p>
+  <p style="margin-top:20px;font-size:1rem;color:#555;">
+   When I’m not coding, I enjoy exploring data visualization tools, watching tech talks, and collaborating on creative projects.
+  </p>
+ </div>
+</section>
 
 <section id="skills" class="fadeUp">
  <h2>Technical Skills</h2>
@@ -134,19 +134,12 @@ footer a{color:var(--blue);}
 
 <section id="projects" class="fadeUp">
  <h2>Projects</h2>
- <div class="grid">
-  <div class="card">
-   <h3>🧠 Student Management System</h3>
-   <p><a href="https://student-management-system-s66s.onrender.com" target="_blank">View Live ↗</a></p>
-  </div>
-  <div class="card">
-   <h3>🌦️ Weather App</h3>
-   <p><a href="https://tarun836.github.io/weather-app/" target="_blank">View Live ↗</a></p>
-  </div>
-  <div class="card">
-   <h3>🍽️ Meal Finder</h3>
-   <p><a href="https://tarun836.github.io/Meal-finder/" target="_blank">View Live ↗</a></p>
-  </div>
+ <div class="card">
+  <ul>
+   <li>🧠 <a href="https://student-management-system-s66s.onrender.com" target="_blank">Student Management System</a></li>
+   <li>🌦️ <a href="https://tarun836.github.io/weather-app/" target="_blank">Weather App</a></li>
+   <li>🍽️ <a href="https://tarun836.github.io/Meal-finder/" target="_blank">Meal Finder</a></li>
+  </ul>
  </div>
 </section>
 
@@ -180,15 +173,10 @@ footer a{color:var(--blue);}
 <div class="toggle" onclick="toggleTheme()">☀️</div>
 
 <script>
-/* fade-in on scroll */
 const observer=new IntersectionObserver(entries=>{
- entries.forEach(e=>{
-   if(e.isIntersecting){e.target.classList.add('visible');}
- });
+ entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');}});
 },{threshold:.2});
 document.querySelectorAll('.fadeUp').forEach(el=>observer.observe(el));
-
-/* theme toggle */
 function toggleTheme(){
  document.body.classList.toggle('dark');
  const icon=document.querySelector('.toggle');
